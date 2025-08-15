@@ -1,27 +1,34 @@
 import pygame
+from pygame.locals import *
 from constants import *
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Robot Jump")
-    clock = pygame.time.Clock()
-    running = True
-    dt = 0 
+    
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    background = pygame.image.load('game/assets/environment/background_wall.png').convert()
 
-    player_position = pygame.Vector2(screen.get_width()/2, screen.get_height()/2)
-    while running:
+    font = pygame.font.Font(None, 36)
+    text = font.render("Hello There", 1, (10, 10, 10))
+    textpos = text.get_rect()
+    textpos.centerx = background.get_rect().centerx
+    background.blit(text, textpos)
+
+    screen.blit(background, (0,0))
+    pygame.display.flip()
+
+    run = True
+    while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
-
-        screen.fill("blue")
-
+                run = False
+        
+        screen.blit(background, (0,0))
         pygame.display.flip()
 
-        dt = clock.tick(FPS)/1000
-
-    pygame.quit()
     
 if __name__ == "__main__":
     main()
