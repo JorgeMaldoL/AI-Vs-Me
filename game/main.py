@@ -16,17 +16,6 @@ def main():
                 running = False
 
         screen.fill("blue")
-        pygame.draw.circle(screen, 'red', player_position, 40)
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] or keys[pygame.K_UP]:
-            player_position.y -= 300 * dt
-        if keys[pygame.K_s] or keys[pygame.K_DOWN]:
-            player_position.y += 300 * dt
-        if keys[pygame.K_a] or keys[pygame.K_LEFT]:
-            player_position.x -= 300 * dt
-        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
-            player_position.x += 300 * dt
 
         pygame.display.flip()
 
